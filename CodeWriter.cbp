@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CodeWriter" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="CodeWriter" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="C:\wxWidgets-2.8.12\lib\gcc_dll\mswu" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="C:\wxWidgets-2.8.12\lib\gcc_dll\mswu" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="libwxmsw28u.a" />
+					<Add directory="C:\wxWidgets-2.8.12\lib\gcc_dll" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-pipe" />
+			<Add option="-mthreads" />
+			<Add option="-D__GNUWIN32__" />
+			<Add option="-D__WXMSW__" />
+			<Add option="-DWXUSINGDLL" />
+			<Add option="-DwxUSE_UNICODE" />
+			<Add option='[[if (PLATFORM == PLATFORM_MSW &amp;&amp; (GetCompilerFactory().GetCompilerVersionString(_T(&quot;gcc&quot;)) &gt;= _T(&quot;4.0.0&quot;))) print(_T(&quot;-Wno-attributes&quot;));]]' />
+			<Add option="-Winvalid-pch" />
+			<Add option="-include wx_pch.h" />
+			<Add option="-DWX_PRECOMP" />
+			<Add option="-Wall" />
+			<Add directory="C:\wxWidgets-2.8.12\include" />
+			<Add directory="C:\wxWidgets-2.8.12\contrib\include" />
+		</Compiler>
+		<ResourceCompiler>
+			<Add directory="C:\wxWidgets-2.8.12\include" />
+		</ResourceCompiler>
+		<Linker>
+			<Add option="-mthreads" />
+		</Linker>
+		<Unit filename="CodeWriterApp.cpp" />
+		<Unit filename="CodeWriterApp.h" />
+		<Unit filename="CodeWriterMain.cpp" />
+		<Unit filename="CodeWriterMain.h" />
+		<Unit filename="Convert.cpp" />
+		<Unit filename="Convert.h" />
+		<Unit filename="NewCode.cpp" />
+		<Unit filename="NewCode.h" />
+		<Unit filename="Replace.cpp" />
+		<Unit filename="Replace.h" />
+		<Unit filename="SizeofFile.h" />
+		<Unit filename="resource.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="wx_pch.h">
+			<Option compile="1" />
+			<Option weight="0" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="CodeWriterApp.cpp" main="CodeWriterFrame" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="wxsmith/CodeWriterframe.wxs" src="CodeWriterMain.cpp" hdr="CodeWriterMain.h" name="CodeWriterFrame" language="CPP" />
+					<wxDialog wxs="wxsmith/NewCode.wxs" src="NewCode.cpp" hdr="NewCode.h" name="NewCode" language="CPP" />
+					<wxDialog wxs="wxsmith/Replace.wxs" src="Replace.cpp" hdr="Replace.h" name="Replace" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
