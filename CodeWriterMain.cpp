@@ -87,52 +87,52 @@ CodeWriterFrame::CodeWriterFrame(wxWindow* parent,wxWindowID id)
     wxMenu* MenuLeet;
     wxMenu* MenuEdit;
 
-    Create(parent, id, _("Code::Writer 3.1.2"), wxDefaultPosition, wxSize(816,636), wxDEFAULT_FRAME_STYLE, _T("id"));
+    Create(parent, id, _("Code::Writer 3.1.2 dev"), wxDefaultPosition, wxSize(816, 636), wxDEFAULT_FRAME_STYLE, _T("id"));
 
     MenuBar = new wxMenuBar();
 
     MenuFile = new wxMenu();
-    MenuFile->Append(idMenuOpen,_("Open file\tCtrl-O"));
-    MenuFile->Append(idMenuSave,_("Save file\tCtrl-S"));
-    MenuFile->Append(idMenuSaveAs,_("Save file as..."));
+    MenuFile->Append(idMenuOpen, _("Open file\tCtrl-O"));
+    MenuFile->Append(idMenuSave, _("Save file\tCtrl-S"));
+    MenuFile->Append(idMenuSaveAs, _("Save file as..."));
     MenuFile->AppendSeparator();
-    MenuFile->Append(idMenuCode,_("Change code\tCtrl-K"));
+    MenuFile->Append(idMenuCode, _("Change code\tCtrl-K"));
     MenuFile->AppendSeparator();
-    MenuFile->Append(idMenuQuit,_("Quit\tAlt-F4"));
-    MenuBar->Append(MenuFile,_("&File"));
+    MenuFile->Append(idMenuQuit, _("Quit\tAlt-F4"));
+    MenuBar->Append(MenuFile, _("&File"));
 
     MenuEdit = new wxMenu();
-    MenuEdit->Append(ID_UPPER,_("Upper Case\tCtrl-U"));
-    MenuEdit->Append(ID_LOWER,_("Lower Case\tCtrl-L"));
+    MenuEdit->Append(ID_UPPER, _("Upper Case\tCtrl-U"));
+    MenuEdit->Append(ID_LOWER, _("Lower Case\tCtrl-L"));
     MenuEdit->AppendSeparator();
-    MenuEdit->Append(ID_DELSPACING,_("Delete Spacing\tCtrl-D"));
-    MenuEdit->Append(ID_MAKELITERAL,_("Make Literal\tCtrl-M"));
-    MenuEdit->Append(ID_PARSELITERAL,_("Parse Literal\tCtrl-P"));
+    MenuEdit->Append(ID_DELSPACING, _("Delete Spacing\tCtrl-D"));
+    MenuEdit->Append(ID_MAKELITERAL, _("Make Literal\tCtrl-M"));
+    MenuEdit->Append(ID_PARSELITERAL, _("Parse Literal\tCtrl-P"));
     MenuEdit->AppendSeparator();
-    MenuEdit->Append(ID_REPLACE,_("Replace\tCtrl-R"));
-    MenuBar->Append(MenuEdit,_("&Edit"));
+    MenuEdit->Append(ID_REPLACE, _("Replace\tCtrl-R"));
+    MenuBar->Append(MenuEdit, _("&Edit"));
 
     MenuLeet = new wxMenu();
-    MenuLeet->Append(ID_FULLLEET,_("Full Leet\tF1"));
-    MenuLeet->Append(ID_UNFULLLEET,_("Un-Full Leet\tF2"));
+    MenuLeet->Append(ID_FULLLEET, _("Full Leet\tF1"));
+    MenuLeet->Append(ID_UNFULLLEET, _("Un-Full Leet\tF2"));
     MenuLeet->AppendSeparator();
-    MenuLeet->Append(ID_EASYLEET,_("Easy Leet\tF3"));
-    MenuLeet->Append(ID_UNEASYLEET,_("Un-Easy Leet\tF4"));
-    MenuBar->Append(MenuLeet,_("&Leet"));
+    MenuLeet->Append(ID_EASYLEET, _("Easy Leet\tF3"));
+    MenuLeet->Append(ID_UNEASYLEET, _("Un-Easy Leet\tF4"));
+    MenuBar->Append(MenuLeet, _("&Leet"));
 
     MenuHelp = new wxMenu();
-    MenuHelp->Append(idMenuAbout,_("About\tAlt-F1"));
-    MenuBar->Append(MenuHelp,_("&Help"));
+    MenuHelp->Append(idMenuAbout, _("About\tAlt-F1"));
+    MenuBar->Append(MenuHelp, _("&Help"));
 
     SetMenuBar(MenuBar);
 
     TimerResize = new wxTimer;
     TimerResize->SetOwner(this, ID_TIMER1);
-    Panel = new wxPanel(this,ID_PANEL1,wxPoint(96,312),wxDefaultSize,wxTAB_TRAVERSAL,_T("ID_PANEL1"));
-    TextFeld = new wxTextCtrl(Panel, ID_TEXTCTRL1, wxEmptyString, wxPoint(1,0), this->GetClientSize()-wxSize(2,1), wxTE_MULTILINE|wxTE_RICH, wxDefaultValidator, _T("ID_TEXTCTRL1"));
-    wxFont TextOutFont(8,wxSWISS,wxFONTSTYLE_NORMAL,wxNORMAL,false,_T("Courier New"),wxFONTENCODING_DEFAULT);
+    Panel = new wxPanel(this, ID_PANEL1, wxPoint(96, 312), wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL1"));
+    TextFeld = new wxTextCtrl(Panel, ID_TEXTCTRL1, wxEmptyString, wxPoint(1, 0), GetClientSize() - wxSize(2, 1), wxTE_MULTILINE | wxTE_RICH, wxDefaultValidator, _T("ID_TEXTCTRL1"));
+    wxFont TextOutFont(8, wxSWISS, wxFONTSTYLE_NORMAL, wxNORMAL, false, _T("Courier New"), wxFONTENCODING_DEFAULT);
     TextFeld->SetFont(TextOutFont);
-    TimerResize->Start(20,false);
+    TimerResize->Start(20, false);
 
     Connect(idMenuQuit,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&CodeWriterFrame::OnQuit);
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&CodeWriterFrame::OnAbout);
@@ -153,28 +153,28 @@ CodeWriterFrame::CodeWriterFrame(wxWindow* parent,wxWindowID id)
     Connect(ID_MAKELITERAL,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&CodeWriterFrame::OnMakeLiteral);
     Connect(ID_PARSELITERAL,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&CodeWriterFrame::OnParseLiteral);
 
-    LogLevel=5;
+    LogLevel = 5;
     currentPW = NULL;
-    old=this->GetClientSize();
-    code=wxT("28061994");
-    title=this->GetTitle();
-    this->SetSizeHints(wxSize(300,200));
-    CurrentFile=wxT("new.txt");
+    old = GetClientSize();
+    code = wxT("28061994");
+    title = GetTitle();
+    SetSizeHints(wxSize(300,200));
+    CurrentFile = wxT("new.txt");
     wxString tmp(GetCommandLine(),wxConvUTF8);
-    CmdLine=tmp;
-    CurrentDir=tmp.SubString(tmp.Find(wxT(":\\")-1),tmp.Find(wxT("CodeWriter.exe")-1));
-    Log(CmdLine,2);
-    if(tmp.Find(wxT(".exe"))!=wxNOT_FOUND)
+    CmdLine = tmp;
+    CurrentDir = tmp.SubString(tmp.Find(wxT(":\\") - 1), tmp.Find(wxT("CodeWriter.exe") - 1));
+    Log(CmdLine, 2);
+    if(tmp.Find(wxT(".exe")) != wxNOT_FOUND)
     {
-        if(tmp.Find(wxT(".exe\" "))!=wxNOT_FOUND)
-            tmp=tmp.Mid(tmp.Find(wxT(".exe\" "))+6);
+        if(tmp.Find(wxT(".exe\" ")) != wxNOT_FOUND)
+            tmp = tmp.Mid(tmp.Find(wxT(".exe\" ")) + 6);
         else
-            tmp=tmp.Mid(tmp.Find(wxT(".exe "))+5);
+            tmp = tmp.Mid(tmp.Find(wxT(".exe ")) + 5);
         Open(tmp);
     }
-    LastSave=TextFeld->GetValue();
+    LastSave = TextFeld->GetValue();
     RefreshTitle();
-    this->Center();
+    Center();
     //this->WarpPointer(this->GetClientSize().x/2,this->GetClientSize().y/2);
     //*)
 }
@@ -182,6 +182,10 @@ CodeWriterFrame::CodeWriterFrame(wxWindow* parent,wxWindowID id)
 CodeWriterFrame::~CodeWriterFrame()
 {
     //(*Destroy(CodeWriterFrame)
+    wxDELETE(currentPW);
+    wxDELETE(Panel);
+    wxDELETE(TimerResize);
+    wxDELETE(TextFeld);
     //*)
 }
 
@@ -193,9 +197,9 @@ void CodeWriterFrame::OnQuit(wxCommandEvent& event)
 
 void CodeWriterFrame::Log(wxString line,int level)
 {
-    if (level<LogLevel)
+    if (level < LogLevel)
         return;
-    FILE* pLog = fopen(WX_TO_C(CurrentDir+wxT("CodeWriter.log")),"a");
+    FILE* pLog = fopen(WX_TO_C(CurrentDir + wxT("CodeWriter.log")), "a");
     fprintf(pLog, "%s\n", line.ToUTF8().data());
     fclose(pLog);
 }
@@ -204,9 +208,9 @@ void CodeWriterFrame::OnCode(wxCommandEvent& event)
 {
     NewCode* dlg = new NewCode(this);
     dlg->SetCode(code);
-    if(dlg->ShowModal()==ACCEPT)
+    if(dlg->ShowModal() == ACCEPT)
     {
-        code=dlg->GetCode();
+        code = dlg->GetCode();
         dlg->Destroy();
         delete dlg;
         this->RefreshTitle();
@@ -222,66 +226,66 @@ void CodeWriterFrame::OnTextChange(wxCommandEvent& event)
 void CodeWriterFrame::OnReplace(wxCommandEvent& event)
 {
     Replace* dlg = new Replace(this);
-    if(dlg->ShowModal()!=EXIT_SUCCESS)
+    if(dlg->ShowModal() != EXIT_SUCCESS)
         return;
-    wxString data=TextFeld->GetValue();
-    data.Replace(dlg->GetOld(),dlg->GetNew());
+    wxString data = TextFeld->GetValue();
+    data.Replace(dlg->GetOld(), dlg->GetNew());
     TextFeld->SetValue(data);
     dlg->Destroy();
 }
 
 void CodeWriterFrame::RefreshTitle()
 {
-    wxString buf=CurrentFile;
+    wxString buf = CurrentFile;
     if(!buf.IsEmpty())
-        buf=buf.AfterLast('\\')+wxT(" - ");
+        buf = buf.AfterLast('\\') + wxT(" - ");
     if(TextFeld->IsModified())
-        buf=EDITED+buf;
+        buf = EDITED + buf;
     if(code!=wxT("28061994"))
-        this->SetTitle(buf+title+wxT(" - ")+code);
+        this->SetTitle(buf + title + wxT(" - ") + code);
     else
-        this->SetTitle(buf+title);
+        this->SetTitle(buf + title);
 }
 
 void CodeWriterFrame::OnSaveAs(wxCommandEvent& event)
 {
     wxFileDialog dlg(this, _("Save your data"), wxT(""), wxT(""),
-                     wxT(""), wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
+                     wxT(""), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
     dlg.SetPath(CurrentFile);
     if (dlg.ShowModal() == wxID_CANCEL)
         return;
-    CurrentFile=dlg.GetPath();
+    CurrentFile = dlg.GetPath();
     OnSave(event);
-    wxMessageBox(wxT("Die Datei\n")+CurrentFile+wxT("\nwurde gespeichert."));
+    wxMessageBox(wxT("Die Datei\n") + CurrentFile + wxT("\nwurde gespeichert."));
 }
 
 void CodeWriterFrame::OnSave(wxCommandEvent& event)
 {
     if(CurrentFile.IsEmpty())
         return;
-    if(CurrentFile==wxT("new.txt"))
+    if(CurrentFile == wxT("new.txt"))
     {
         OnSaveAs(event);
         return;
     }
     wxString filename=CurrentFile;
     wxString data=TextFeld->GetValue();
-    if((filename.EndsWith(wxT(".bmp")))||(filename.EndsWith(wxT(".png"))))
+    if((filename.EndsWith(wxT(".bmp"))) || (filename.EndsWith(wxT(".png"))))
     {
         wxDELETE(currentPW);
-        data.Replace(wxT("\n"),wxT("\\n"));
-        unsigned char rawdata[data.Length()+2];
-        for(int i=0;i<(int)data.Length()+2;i++)
+        data.Replace(wxT("\n"), wxT("\\n"));
+        unsigned char rawdata[data.Length() + 2];
+        for(int i = 0; i < (int)data.Length() + 2; ++i)
             rawdata[i] = ((int)data[i] >= 128) ? '?' : (int)data[i];
-        int width=data.Length()/3+1,height=1;
-        for(int i=data.Length()/3+1;i>0;i--)
-            for(int j=1;j<i;j++)
-                if(i*j==(int)data.Length()/3+1)
+        int width = data.Length() / 3 + 1, height = 1;
+        for(int i = data.Length() / 3 + 1; i > 0; --i)
+            for(int j = 1; j < i; ++j)
+                if(i * j == (int)data.Length() / 3 + 1)
                 {
-                    width=i;
-                    height=j;
+                    width = i;
+                    height = j;
                 }
-        wxImage bmp(width,height,rawdata);
+        wxImage bmp(width, height, rawdata);
         bmp.SaveFile(filename);
     }
     else
@@ -311,56 +315,53 @@ void CodeWriterFrame::OnSave(wxCommandEvent& event)
         {
             wxDELETE(currentPW);
             wxFileOutputStream output(filename);
-            output.Write((const void*)data.mb_str(wxConvUTF8),data.Length());
+            const char* pureData = data.ToUTF8().data();
+            output.Write(pureData, strlen(pureData));
             output.Close();
             if(filename.EndsWith(wxT(".code")))
-                wxExecute(wxT("encode \"")+filename+wxT("\" ")+code);
+                wxExecute(wxT("encode \"") + filename + wxT("\" ") + code);
         }
 
     }
-    CurrentFile=filename;
+    CurrentFile = filename;
     TextFeld->SetModified(false);
-    LastSave=TextFeld->GetValue();
-    this->RefreshTitle();
-    this->Log(wxT("Save(\"")+CurrentFile+wxT("\");"));
+    LastSave = TextFeld->GetValue();
+    RefreshTitle();
+    Log(wxT("Save(\"") + CurrentFile + wxT("\");"));
 }
 
 void CodeWriterFrame::OnOpen(wxCommandEvent& event)
 {
     wxFileDialog dlg(this, _("Choose your file"), wxT(""), wxT(""),
-                     wxT(""), wxFD_OPEN|wxFD_FILE_MUST_EXIST);
+                     wxT(""), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (dlg.ShowModal() == wxID_CANCEL)
         return;
     Open(dlg.GetPath());
-    wxMessageBox(wxT("Die Datei\n")+CurrentFile+wxT("\nwurde geoeffnet."));
+    wxMessageBox(wxT("Die Datei\n") + CurrentFile + wxT("\nwurde geoeffnet."));
 }
 
 void CodeWriterFrame::Open(wxString filename)
 {
-    if(filename.Find('\"')!=wxNOT_FOUND)
-        filename.Replace(wxT("\""),wxT(""),true);
+    if(filename.Find('\"') != wxNOT_FOUND)
+        filename.Replace(wxT("\""), wxT(""), true);
     if(filename.IsEmpty())
         return;
-    this->Log(wxT("Open(\"")+filename+wxT("\");"));
+    Log(wxT("Open(\"") + filename + wxT("\");"));
     wxDELETE(currentPW);
-    if((filename.EndsWith(wxT(".bmp")))||(filename.EndsWith(wxT(".png"))))
+    if((filename.EndsWith(wxT(".bmp"))) || (filename.EndsWith(wxT(".png"))))
     {
         wxImage bmp(filename,wxBITMAP_TYPE_ANY);
-        char rawdata[bmp.GetWidth()*bmp.GetHeight()*3+1];
-        unsigned char* data=bmp.GetData();
-        for(int i=0;i<bmp.GetWidth()*bmp.GetHeight()*3+1;i++)
-            rawdata[i]=(int)data[i];
-        wxString buf((const char*)rawdata,wxConvUTF8);
-        buf.Replace(wxT("\\n"),wxT("\n"));
-        TextFeld->SetValue(buf);
+        wxString text = wxString::FromUTF8((char*)bmp.GetData());
+        text.Replace(_("\\n"), _("\n"));
+        TextFeld->SetValue(text);
     }
     else if(filename.EndsWith(wxT(".code")))
     {
         wxArrayString array;
-        wxExecute(wxT("viewcode \"")+filename+wxT("\" ")+code,array);
+        wxExecute(wxT("viewcode \"") + filename + wxT("\" ") + code, array);
         wxString output = wxEmptyString;
-        for(unsigned int i=0;i<array.GetCount();i++)
-            output+=array[i]+wxT("\n");
+        for(unsigned int i = 0; i < array.GetCount(); ++i)
+            output += array[i] + wxT("\n");
         TextFeld->SetValue(output);
     }
     else if(filename.EndsWith(wxT(".rc4")))
@@ -384,14 +385,13 @@ void CodeWriterFrame::Open(wxString filename)
     {
         wxFileInputStream input(filename);
         char data[SizeOfFile(filename.mb_str(wxConvUTF8))];
-        input.Read((void*)data,SizeOfFile(filename.mb_str(wxConvUTF8)));
-        wxString buf(data,wxConvUTF8);
-        TextFeld->SetValue(buf);
+        input.Read((void*)data, SizeOfFile(filename.mb_str(wxConvUTF8)));
+        TextFeld->SetValue(wxString::FromUTF8(data));
     }
-    CurrentFile=filename;
-    LastSave=TextFeld->GetValue();
+    CurrentFile = filename;
+    LastSave = TextFeld->GetValue();
     TextFeld->SetModified(false);
-    this->RefreshTitle();
+    RefreshTitle();
 }
 
 void CodeWriterFrame::OnAbout(wxCommandEvent& event)
@@ -408,10 +408,10 @@ void CodeWriterFrame::OnClose(wxCloseEvent& event)
 
 void CodeWriterFrame::OnTimerResize(wxTimerEvent& event)
 {
-    if(old!=this->GetClientSize())
+    if(old != GetClientSize())
     {
-        TextFeld->SetSize(this->GetClientSize()-wxSize(2,1));
-        old=this->GetClientSize();
+        TextFeld->SetSize(GetClientSize() - wxSize(2, 1));
+        old = GetClientSize();
     }
 }
 

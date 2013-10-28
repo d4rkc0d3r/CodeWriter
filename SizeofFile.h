@@ -5,7 +5,7 @@
 
 int SizeOfFile(const char* filename)
 {
-    FILE* pFile = fopen(filename,"rb");
+    FILE* pFile = fopen(filename, "rb");
     if(pFile==NULL)
         return EOF;
     fseek(pFile, 0, SEEK_END);

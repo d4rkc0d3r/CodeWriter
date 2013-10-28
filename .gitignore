@@ -4,6 +4,8 @@ wx_pch.h.gch/
 *.exe
 *.rc4
 *.code
+*.layout
+*.depend
 
 #################
 ## Eclipse

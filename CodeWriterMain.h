@@ -19,7 +19,7 @@
 
 #define EDITED wxT("*")
 
-#define WX_TO_C(s) (const char*)wxString((s)).mb_str(wxConvUTF8)
+#define WX_TO_C(s) ((const char*)(s).ToUTF8().data())
 #define SYS(s) system(WX_TO_C((s)))
 
 class CodeWriterFrame: public wxFrame
@@ -44,7 +44,7 @@ class CodeWriterFrame: public wxFrame
         wxString* currentPW;
         int LogLevel;
 
-        void Log(wxString line,int level=3);
+        void Log(wxString line, int level = 3);
         void Open(wxString filename);
         void RefreshTitle();
 
