@@ -183,9 +183,6 @@ CodeWriterFrame::~CodeWriterFrame()
 {
     //(*Destroy(CodeWriterFrame)
     wxDELETE(currentPW);
-    wxDELETE(Panel);
-    wxDELETE(TimerResize);
-    wxDELETE(TextFeld);
     //*)
 }
 
